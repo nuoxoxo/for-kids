@@ -1,1 +1,1 @@
-# Small games what more can i say xD
+# Small terminal-based games
