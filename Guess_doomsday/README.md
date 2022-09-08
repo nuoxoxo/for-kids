@@ -1,4 +1,4 @@
-# :sunflower: Guess the Doomsday :sunflower: 
+# :crown: Guess the Doomsday :crown: 
 
 Given a `Year` (YYYY) \
 Guess the Doomsday of that `Year`
