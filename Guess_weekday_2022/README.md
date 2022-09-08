@@ -5,7 +5,7 @@
 ➜ Guess_weekday_2022 $ python3 ./guess_weekday_2022.py
 ```
 - Play:
-```
+```go
 Right: 0 | Wrong: 0 | Total: 0 | Ratio: 0% 
 2022-05-04
 3
