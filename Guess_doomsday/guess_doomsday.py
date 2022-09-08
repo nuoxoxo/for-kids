@@ -18,7 +18,7 @@ def unit_test() -> None:
     print(f'Doomsday 1994 is {get_doomsday(1994)} (should be 1)')
 
 def sep():
-    print('\033[1;33;40m-- \033[1;37;40m')
+    print('\n\033[1;33;40m- \033[1;37;40m')
 
 start_dt = date.today().replace(day=1, month=1, year=1900).toordinal()
 end_dt = date.today().replace(day=31, month=12).toordinal()
@@ -49,9 +49,9 @@ while True:
     Total += 1
     if ans_real == ans_user:
         Right += 1
-        print(f'{Red}Right!{White} Doomsday {yr} is {ans_real} ')
+        print(f'➜ {Red}Right!{White} Doomsday {yr} is {ans_real} ')
         sep()
     else:
         Wrong += 1
-        print(f'{Red}Wrong!{White} Doomsday {yr} is {ans_real} ')
+        print(f'➜ {Red}Wrong!{White} Doomsday {yr} is {ans_real} ')
         sep()
