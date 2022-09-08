@@ -57,11 +57,11 @@ while True:
 
     if ans_real == ans_user:
         Right += 1
-        print(f'Right! It\'s a {ans_word[0]} ')
-        print(f'Correcte! C\'est {ans_word[1]} ')
+        print(f'➜ Right! It\'s a {ans_word[0]} ')
+        print(f'➜ Correcte! C\'est {ans_word[1]} ')
         sep()
     else:
         Wrong += 1
-        print(f'Wrong! The answer is {ans_word[0]} ')
-        print(f'Faux! La vraie date c\'est {ans_word[1]} ')
+        print(f'➜ Wrong! The answer is {ans_word[0]} ')
+        print(f'➜ Faux! La vraie date c\'est {ans_word[1]} ')
         sep()
