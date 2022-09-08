@@ -6,7 +6,7 @@ Guess the Doomsday of that `Year`
 - :running_woman:&nbsp; Run:
 ```rust
 ➜ home $ cd Guess_doomsday
-➜ Guess_doomsday $ python3 guess_doomsday.py 
+➜ Guess_doomsday $ python3 ./guess_doomsday.py 
 ```
 - :woman_playing_handball:&nbsp; Play:
 ```go
