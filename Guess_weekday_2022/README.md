@@ -1,7 +1,8 @@
-# :sunflower: Guess what weekday it is 
+# :sunflower: Guess the Weekday :sunflower: 
 
 Given a `date` (YYYY-MM-DD) \
-Guess the Day of the Week that the `date` falls on
+Guess the Day of the Week that the `date` falls on \
+Yep that's it xD
 
 - Run:
 ```rust
