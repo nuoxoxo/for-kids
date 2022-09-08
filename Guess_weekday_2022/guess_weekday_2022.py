@@ -14,7 +14,7 @@ def i2w(n):
     return cases.get(n, 'N/A')
 
 def sep():
-    print('\033[1;33;40m- \033[1;37;40m')
+    print('\n\033[1;33;40m- \033[1;37;40m\n')
 
 start_dt = date.today().replace(day=1, month=1).toordinal()
 end_dt = date.today().replace(day=31, month=12).toordinal()
