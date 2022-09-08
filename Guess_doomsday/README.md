@@ -1,15 +1,14 @@
 # :sunflower: Guess the Doomsday :sunflower: 
 
-Given a `year` (YYYY) \
-Guess the Doomsday of that Year
-- What is a doomsday?
-  - cf. [Here](https://en.wikipedia.org/wiki/Doomsday_rule) 
- Run:
+Given a `Year` (YYYY) \
+Guess the Doomsday of that `Year`
+- :thinking:&nbsp; You might want to know what a `doomsday` is?&nbsp; cf. [Here](https://en.wikipedia.org/wiki/Doomsday_rule) 
+- :running_woman:&nbsp; Run:
 ```rust
 ➜ home $ cd Guess_doomsday
 ➜ Guess_doomsday $ python3 guess_doomsday.py 
 ```
-- Play:
+- :woman_playing_handball:&nbsp; Play:
 ```go
 Right: 0 | Wrong: 0 | Total: 0 
 
