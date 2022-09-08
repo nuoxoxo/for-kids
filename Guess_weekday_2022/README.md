@@ -44,3 +44,7 @@ Right: 2 | Wrong: 1 | Total: 3 | Ratio: 66.67%
 
 (continue ...)
 ```
+- check with `cal`
+```
+➜ Home $ cal -y
+```
