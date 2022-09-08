@@ -3,12 +3,12 @@
 Given a `date` (YYYY-MM-DD) \
 Guess the Day of the Week that the `date` falls on 
 
-- Run:
+- :running_woman:&nbsp; Run:
 ```rust
 ➜ home $ cd Guess_weekday_2022
 ➜ Guess_weekday_2022 $ python3 ./guess_weekday_2022.py
 ```
-- Play:
+- :woman_playing_handball:&nbsp; Play:
 ```go
 Right: 0 | Wrong: 0 | Total: 0 | Ratio: 0% 
 2022-05-04
