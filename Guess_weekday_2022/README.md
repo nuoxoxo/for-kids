@@ -1,4 +1,8 @@
-# Given a date (YYYY-MM-DD), guess the day of the week that this date falls on :)
+# :sunflower: Guess what weekday it is 
+
+Given a `date` (YYYY-MM-DD) \
+Guess the Day of the Week that the `date` falls on
+
 - Run:
 ```rust
 ➜ home $ cd Guess_weekday_2022
