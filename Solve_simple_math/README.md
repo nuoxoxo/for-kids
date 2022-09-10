@@ -30,7 +30,7 @@ Your answer is: end
 see you next time :)
 ```
 
-# type `exit` or `end` to exit
+# :bike:&nbsp; type `exit` or `end` to exit
 
 ```j
 9 + 0 
@@ -38,7 +38,7 @@ Your answer is: exit
 see you next time :)
 ```
 
-# type `next` to re-generate a new one
+# :helicopter:&nbsp; type `next` to re-generate a new one
 ```j
 6 + 2 
 Your answer is: next 
