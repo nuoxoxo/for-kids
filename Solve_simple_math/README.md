@@ -23,8 +23,9 @@ Your answer is: 12
  ➜ Wrong! 
  ➜ The answer is 4 
 5 + 0 
-Your answer is: end
-see you next time :)
+Your answer is: 
+
+(continue ...)
 ```
 
 ## :bike:&nbsp; `exit` or `end` to exit
