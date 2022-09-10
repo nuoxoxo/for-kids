@@ -1,6 +1,6 @@
-# :sunflower: auto-generated math problems for 1st graders :sunflower: 
+# :sunflower: math for 1st graders :sunflower: 
 
-Just like it said, do the math xD
+do the math
 
 # :running_woman:&nbsp; Run
 
