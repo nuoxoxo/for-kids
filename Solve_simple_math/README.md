@@ -18,9 +18,6 @@ Your answer is: 2
 8 ÷ 2 
 Your answer is: 4
  ➜ Correct! 
-8 + 7 
-Your answer is: 15
- ➜ Correct! 
 7 - 3 
 Your answer is: 12
  ➜ Wrong! 
