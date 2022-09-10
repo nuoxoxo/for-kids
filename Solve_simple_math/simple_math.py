@@ -38,3 +38,5 @@ while True:
     else:
         print(f'{cyan} ➜ Wrong! {noc}')
         print(f'{green} ➜ The answer is {res} {noc}')
+
+print(white + 'see you next time :)' + noc)
