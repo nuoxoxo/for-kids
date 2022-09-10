@@ -11,7 +11,7 @@ do the math
 
 # :woman_playing_handball:&nbsp; Play
 
-```j
+```
 7 - 5 
 Your answer is: 2
  ➜ Correct! 
@@ -32,14 +32,14 @@ see you next time :)
 
 # :bike:&nbsp; type `exit` or `end` to exit
 
-```j
+```
 9 + 0 
 Your answer is: exit
 see you next time :)
 ```
 
 # :helicopter:&nbsp; type `next` to re-generate a new one
-```j
+```
 6 + 2 
 Your answer is: next 
 8 / 5 
