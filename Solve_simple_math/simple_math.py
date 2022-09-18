@@ -7,15 +7,18 @@ white = '\033[0;37m'
 green = '\033[32m'
 
 while True:
-    a = random.randint(0, 9)
-    b = random.randint(0, 9)
-    s = random.choice(['+', '-', 'x', '÷', '/'])
+    a = random.randint(0, 21)
+    b = random.randint(0, 21)
+    # s = random.choice(['+', '-', 'x', '÷', '/'])
+    s = random.choice(['+', '-'])
     res = 1e9
+    if a == 0 or b == 0:
+        continue
     if a < b:
         a, b = b, a
     if (s == '/' or s == '÷') and b == 0:
         continue
-    time.sleep(0.9)
+    #time.sleep(0.9)
     print(yell + str(a), s, b, noc)
     guess = input(white + 'Your answer is: ' + noc)
     if guess == 'exit' or guess == 'end':
