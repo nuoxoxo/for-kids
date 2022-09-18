@@ -1,15 +1,16 @@
 import random, time
 
+white = '\033[0;37m'
+green = '\033[32m'
 yell = '\033[33m'
 cyan = '\033[36m'
 noc = '\033[0m'
-white = '\033[0;37m'
-green = '\033[32m'
-upper_bound = 20
+
+U = 20 # upper_bound
 
 while True:
-    a = random.randint(1, upper_bound)
-    b = random.choice([upper_bound % a, upper_bound % a - 1])
+    a = random.randint(1, U)
+    b = random.choice([U % a, U % a - 1])
     #b = random.randint(0, 9)
     s = random.choice(['+', '-'])
     #s = random.choice(['+', '-', 'x', '÷', '/'])
