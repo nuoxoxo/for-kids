@@ -1,5 +1,5 @@
 from datetime import date
-import random
+import random, time
 
 def i2w(n):
     cases = {
@@ -37,6 +37,8 @@ while True:
     else:
         print(f'Ratio: {Yello}{round(Right / Total * 100, 2)}{White}% ')
     #print(''):
+
+    time.sleep(1.2)
 
     dt = date.fromordinal(random.randint(start_dt, end_dt))
     wd = str(dt.weekday())
