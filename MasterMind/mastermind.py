@@ -47,7 +47,7 @@ def printer(records) -> None:
 
 # Game block
 
-choices = [1, 2, 3, 4]#, 5]#, 6, 7, 8]
+choices = [1, 2, 3, 4, 5, 6, 7, 8]
 codemaker = []
 records = []
 for _ in range(4):
