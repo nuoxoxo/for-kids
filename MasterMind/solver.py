@@ -1,5 +1,7 @@
 import random
 
+# func
+
 def print_possible(p):
     for i in range(len(p)):
         print(i + 1, ': ', p[i])
@@ -10,14 +12,22 @@ def get_first_call(c, i):
     res = c[i], c[i], c[i], c[i + 1]
     return res
 
+# global
+
 colors = [1,2,3,4,5,6,7,8]
 possible = [[] for _ in range(len(colors))]
-print_possible(possible)
+#print_possible(possible)
 
 first_call_got_something = False
 first_call_pointer = -2
 
+SURE = 0
+WAIT = 1
+
+# main
+
 while True:
+    print_possible(possible)
     feedback = ''
     call = ''
     # make first call
@@ -40,9 +50,14 @@ while True:
     print(feedback)
     # case 1: 00
     # case 2: 01
-    # case 3: 02
-    # case 4: 11
-    # case 5: 20
+    # case 3: 02 -> LC is 4, RC is one of 1-3
+    # case 4: 11 -> LC is 4
+    # case 5: 20 -> 4 is sure, one of 1-3 is sure
+
+
+
+""" Deprecated """
+
 
 """
 # initial guess, which is a 4-repeated digit
