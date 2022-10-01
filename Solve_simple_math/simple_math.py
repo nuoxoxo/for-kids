@@ -1,14 +1,26 @@
 import random, time
 
+green = '\033[32m'
 yell = '\033[33m'
 cyan = '\033[36m'
-noc = '\033[0m'
 white = '\033[0;37m'
-green = '\033[32m'
+noc = '\033[0m'
+
+Right, Wrong, Total = 0, 0, 0
 
 while True:
-    a = random.randint(0, 21)
-    b = random.randint(0, 21)
+    print(f'Right: {green}{Right}{white} | ', end = '')
+    print(f'Wrong: {cyan}{Wrong}{white} | ', end = '')
+    print(f'Total: {Total} | ', end = '') 
+    if Total == 0:
+        print(f'Ratio: {Right // 1 * 100}% ')
+    else:
+        print(f'Ratio: {yell}{round(Right / Total * 100, 2)}{white}% ')
+    print()
+
+    time.sleep(1.2)
+    a = random.randint(-1, 30)
+    b = random.randint(-1, 30)
     # s = random.choice(['+', '-', 'x', '÷', '/'])
     s = random.choice(['+', '-'])
     res = 1e9
@@ -38,8 +50,11 @@ while True:
         res = a // b
     if res == int(guess):
         print(f'{green} ➜ Correct! {noc}')
+        Right += 1
     else:
+        Wrong += 1
         print(f'{cyan} ➜ Wrong! {noc}')
         print(f'{green} ➜ The answer is {res} {noc}')
-
+    print()
+    Total += 1
 print(white + 'see you next time :)' + noc)
