@@ -18,11 +18,12 @@ while True:
         print(f'Ratio: {yell}{round(Right / Total * 100, 2)}{white}% ')
     print()
 
-    # time.sleep(1.2)
-    a = random.randint(-1, 30)
-    b = random.randint(-1, 30)
-    s = random.choice(['+', '-', 'x', '÷', '/'])
-    #s = random.choice(['+', '-'])
+#    time.sleep(1.2)
+    a = random.randint(-11, 12)
+    b = random.randint(-11, 12)
+    # s = random.choice(['+', '-', 'x', '÷', '/'])
+    # s = random.choice(['+', '-'])
+    s = random.choice(['x'])
     res = 1e9
     if a == 0 or b == 0:
         continue
