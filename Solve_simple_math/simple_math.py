@@ -19,10 +19,10 @@ while True:
     print()
 
     # time.sleep(1.2)
-    a = random.randint(-1, 30)
-    b = random.randint(-1, 30)
-    s = random.choice(['+', '-', 'x', '÷', '/'])
-    #s = random.choice(['+', '-'])
+    a = random.randint(-1, 12)
+    b = random.randint(-1, 12)
+    # s = random.choice(['+', '-', 'x', '÷', '/'])
+    s = random.choice(['+', '-'])
     res = 1e9
     if a == 0 or b == 0:
         continue
@@ -32,14 +32,15 @@ while True:
         continue
     #time.sleep(0.9)
     print(yell + str(a), s, b, noc)
-    guess = input(white + 'Your answer is: ' + noc)
-    if guess == 'exit' or guess == 'end':
+    line = input(white + 'Your answer is: ' + noc).strip()
+    if line == 'exit' or line == 'end':
         break
-    if guess == 'next':
+    if line == 'next':
         continue
-    if not guess.isdigit():
+    if not line.isdigit():
         continue
-    #print()
+    guess = int(line)
+    #print():
     if s == '+':
         res = a + b
     elif s == '-':
