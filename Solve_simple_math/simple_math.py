@@ -22,7 +22,7 @@ while True:
     a = random.randint(-1, 12)
     b = random.randint(-1, 12)
     # s = random.choice(['+', '-', 'x', '÷', '/'])
-    s = random.choice(['+', '-'])
+    s = random.choice(['+', '-', '-', '-'])
     res = 1e9
     if a == 0 or b == 0:
         continue

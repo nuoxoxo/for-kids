@@ -19,7 +19,7 @@ while True:
         a, b = b, a
     if (s == '/' or s == '÷') and b == 0:
         continue
-    time.sleep(0.9)
+    # time.sleep(0.9)
     print(yell + str(a), s, b, noc)
     guess = input(white + 'Your answer is: ' + noc)
     if guess == 'exit' or guess == 'end':
