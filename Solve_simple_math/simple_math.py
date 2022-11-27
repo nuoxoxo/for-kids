@@ -23,8 +23,12 @@ while True:
     a = random.randint(-1, 12)
     b = random.randint(-1, 12)
     # s = random.choice(['+', '-', 'x', '÷', '/'])
+<<<<<<< HEAD
     # s = random.choice(['+', '-'])
     s = random.choice(['x'])
+=======
+    s = random.choice(['+', '-', '-', '-'])
+>>>>>>> 4dbd659d9c0800712a439bb7cb7327ff25c0e365
     res = 1e9
     if a == 0 or b == 0:
         continue
