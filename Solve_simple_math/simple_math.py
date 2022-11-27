@@ -9,6 +9,7 @@ noc = '\033[0m'
 Right, Wrong, Total = 0, 0, 0
 
 while True:
+    """
     print(f'Right: {green}{Right}{white} | ', end = '')
     print(f'Wrong: {cyan}{Wrong}{white} | ', end = '')
     print(f'Total: {Total} | ', end = '') 
@@ -17,12 +18,13 @@ while True:
     else:
         print(f'Ratio: {yell}{round(Right / Total * 100, 2)}{white}% ')
     print()
-
+    """
     # time.sleep(1.2)
     a = random.randint(-1, 12)
     b = random.randint(-1, 12)
     # s = random.choice(['+', '-', 'x', '÷', '/'])
-    s = random.choice(['+', '-'])
+    # s = random.choice(['+', '-'])
+    s = random.choice(['x'])
     res = 1e9
     if a == 0 or b == 0:
         continue
@@ -40,7 +42,7 @@ while True:
     if not line.isdigit():
         continue
     guess = int(line)
-    #print():
+    # print():
     if s == '+':
         res = a + b
     elif s == '-':
@@ -54,8 +56,9 @@ while True:
         Right += 1
     else:
         Wrong += 1
+        print(a, b, a*b, guess, int(guess))
         print(f'{cyan} ➜ Wrong! {noc}')
         print(f'{green} ➜ The answer is {res} {noc}')
-    print()
+    # print()
     Total += 1
 print(white + 'see you next time :)' + noc)
