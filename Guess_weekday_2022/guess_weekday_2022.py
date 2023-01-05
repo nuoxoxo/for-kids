@@ -16,8 +16,10 @@ def i2w(n):
 def sep():
     print('\n\033[1;33;40m- \033[1;37;40m\n')
 
-start_dt = date.today().replace(day=1, month=1).toordinal()
-end_dt = date.today().replace(day=31, month=12).toordinal()
+# start_dt = date.today().replace(day=1, month=1).toordinal()
+start_dt = date.today().replace(day=1, month=1, year=2022).toordinal()
+# end_dt = date.today().replace(day=31, month=12).toordinal()
+end_dt = date.today().replace(day=31, month=12, year=2023).toordinal()
 
 Right, Wrong, Total = 0, 0, 0
 
@@ -38,7 +40,7 @@ while True:
         print(f'Ratio: {Yello}{round(Right / Total * 100, 2)}{White}% ')
     #print(''):
 
-    time.sleep(1.2)
+    time.sleep(0.6)
 
     dt = date.fromordinal(random.randint(start_dt, end_dt))
     wd = str(dt.weekday())
@@ -59,11 +61,11 @@ while True:
 
     if ans_real == ans_user:
         Right += 1
-        print(f'➜ Right! It\'s a {ans_word[0]} ')
-        print(f'➜ Correcte! C\'est {ans_word[1]} ')
+        print(f'➜ {Green} Right! {White} \nIt\'s a {ans_word[0]} ')
+        # print(f'➜ Correcte! C\'est {ans_word[1]} ')
         sep()
     else:
         Wrong += 1
-        print(f'➜ Wrong! The answer is {ans_word[0]} ')
-        print(f'➜ Faux! La vraie date c\'est {ans_word[1]} ')
+        print(f'➜ {Red} Wrong! {Red}\nThe answer is {ans_word[0]} ')
+        # print(f'➜ Faux! La vraie date c\'est {ans_word[1]} ')
         sep()
