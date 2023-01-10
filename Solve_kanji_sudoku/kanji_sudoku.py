@@ -1,4 +1,15 @@
 """
+     //
+   _00\
+  (__/ \  _  _
+     \  \/ \/ \
+     (         )\
+      \_______/  \
+       [[] [[]
+       [[] [[]
+"""
+
+"""
 [
     [0, 0, 0,  0, 0, 0,  0, 0, 0],
     [0, 0, 0,  0, 0, 0,  0, 0, 0],
@@ -24,65 +35,54 @@ Y = '月'
 D = '大'
 X = '小'
 
-arr = [
-        '四',
-        '五',
-        '六',
-        '七',
-        '九',
-        '平',
-        '月',
-        '大',
-        '小',
-    ]
+arr = [S, W, L, Q, J, P, Y, D, X]
 
+#
+# search for 0-marked square
+# return the top-left most one
+#
 
-
-def move_to_next(puzzle):
-
+def find_next_move(puzzle):
     for r in range(9):
         for c in range(9):
             if puzzle[r][c] == 0:
                 return r, c
     return None, None
 
+#
+# brain
+#
 
+def Brain(puzzle, guess, R, C): 
 
-def move_is_valid(puzzle, guess, row, col): 
-
-    guessed_row = puzzle[row] # check current row
-
-    if guess in guessed_row:
+    guessed_row = puzzle[R]
+    if guess in guessed_row: # check dup in current row
         return False
 
-    guessed_col = [puzzle[i][col] for i in range(9)] # check current col
-
-    if guess in guessed_col:
+    guessed_col = [puzzle[i][C] for i in range(9)]
+    if guess in guessed_col: # check dup in same col
         return False
 
-    # check 3x3 grid
-    grid_row_start = (row // 3) * 3
-    grid_col_start = (col // 3) * 3
-
-    for r in range(grid_row_start, grid_row_start + 3):
-        for c in range(grid_col_start, grid_col_start + 3):
-            if puzzle[r][c] == guess: # unsolved
+    r = (R // 3) * 3
+    c = (C // 3) * 3 # check the 3x3 where {R, C} is 
+    for rr in range(r, r + 3):
+        for cc in range(c, c + 3):
+            if guess == puzzle[rr][cc]:
                 return False
     return True
 
 
 
 def solver(puzzle):
-    r, c = move_to_next(puzzle)
-    if r is None:
-        return True
-
-    for guess in arr:  
-        if move_is_valid(puzzle, guess, r, c):
-            puzzle[r][c] = guess
-            if solver(puzzle):
+    r, c = find_next_move(puzzle)
+    if r is None: # solved if board has no 0
+        return True 
+    for guess in arr:
+        if Brain(puzzle, guess, r, c):
+            puzzle[r][c] = guess # btk guess
+            if solver(puzzle): # btk recurse
                 return True
-        # backtrack
+        # backtrack reset
         puzzle[r][c] = 0
     return False
 
@@ -95,24 +95,9 @@ def PrintGrid(Game):
         print()
     print()
 
-
-
-def Play(No, Game):
-    print(f'Game {No}')
-    PrintGrid(Game)
-    solver(Game)
-    PrintGrid(Game)
-    
-    # pprint(Game_0)
-    # print()
-    # print(solver(Game_0))
-    # print()
-    # pprint(Game_0)
-    # print()
-
 # D R I V E
 if __name__ == '__main__':
-
+    
     Game_0 = [
         [W, 0, 0,  0, 0, 0,  0, 0, S],
         [0, Y, 0,  0, P, 0,  W, 0, 0],
@@ -168,7 +153,18 @@ if __name__ == '__main__':
         [0, 0, 0,  0, 0, 0,  0, 0, 0],
         [0, 0, 0,  0, L, J,  W, X, 0]
     ]
-    Play(0, Game_0)
-    Play(1, Game_1)
-    Play(2, Game_2)
-    Play(3, Game_3)
+
+    def Index(): # hack c++ static int
+        Index.i += 1
+    Index.i = 0
+
+    def SolveGame(Game):
+        print(f'Game {Index.i}')
+        PrintGrid(Game)
+        solver(Game)
+        PrintGrid(Game)
+
+    SolveGame(Game_0)
+    SolveGame(Game_1)
+    SolveGame(Game_2)
+    SolveGame(Game_3)
