@@ -154,12 +154,13 @@ if __name__ == '__main__':
         [0, 0, 0,  0, L, J,  W, X, 0]
     ]
 
-    def Index(): # hack c++ static int
-        Index.i += 1
-    Index.i = 0
+    def Counting(): # hack c++ static int
+        Counting.i += 1
+    Counting.i = 0
 
     def SolveGame(Game):
-        print(f'Game {Index.i}')
+        Counting()
+        print(f'Game {Counting.i}')
         PrintGrid(Game)
         solver(Game)
         PrintGrid(Game)
