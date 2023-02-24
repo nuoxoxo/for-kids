@@ -67,6 +67,6 @@ while True:
         sep()
     else:
         Wrong += 1
-        print(f'➜ {Red} Wrong! {Red}\nThe answer is {ans_word[0]} ')
+        print(f'➜ {Red} Wrong! {White\nThe answer is {ans_word[0]} ')
         # print(f'➜ Faux! La vraie date c\'est {ans_word[1]} ')
         sep()
