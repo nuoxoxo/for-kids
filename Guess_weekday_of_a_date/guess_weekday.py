@@ -14,10 +14,11 @@ def i2w(n):
     return cases.get(n, 'N/A')
 
 def sep():
-    print('\n\033[1;33;40m- \033[1;37;40m\n')
+    pass
+    # print('\n\033[1;33;40m- \033[1;37;40m\n')
 
 # start_dt = date.today().replace(day=1, month=1).toordinal()
-start_dt = date.today().replace(day=1, month=1, year=2022).toordinal()
+start_dt = date.today().replace(day=1, month=1, year=2023).toordinal()
 # end_dt = date.today().replace(day=31, month=12).toordinal()
 end_dt = date.today().replace(day=31, month=12, year=2023).toordinal()
 
@@ -66,6 +67,6 @@ while True:
         sep()
     else:
         Wrong += 1
-        print(f'➜ {Red} Wrong! {Red}\nThe answer is {ans_word[0]} ')
+        print(f'➜ {Red} Wrong! {White}\nThe answer is {ans_word[0]} ')
         # print(f'➜ Faux! La vraie date c\'est {ans_word[1]} ')
         sep()
