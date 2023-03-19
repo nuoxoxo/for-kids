@@ -8,9 +8,9 @@ int	main()
 	// 1st way to print time
 	std::cout << std::asctime(local);
 
-	char	buffer[32];
 
 	// 2nd way to print time
+	char	buffer[32];
 	std::strftime(buffer, 32, "%a, %d.%m.%Y %H:%M:%S", local);
 	std::cout << buffer << std::endl;
 }
