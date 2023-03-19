@@ -2,8 +2,10 @@
 
 int	main()
 {
+	// get time_t
 	std::time_t	now = std::time(0);
 	std::tm		*local = std::localtime( & now );
+
 
 	// 1st way to print time
 	std::cout << std::asctime(local);
