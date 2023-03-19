@@ -6,10 +6,8 @@ int	main()
 	std::time_t	now = std::time(0);
 	std::tm		*local = std::localtime( & now );
 
-
 	// 1st way to print time
 	std::cout << std::asctime(local);
-
 
 	// 2nd way to print time
 	char	buffer[32];
