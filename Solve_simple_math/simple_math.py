@@ -1,14 +1,15 @@
 import random, time
 
+white = '\033[0;37m'
 green = '\033[32m'
 yell = '\033[33m'
 cyan = '\033[36m'
-white = '\033[0;37m'
 noc = '\033[0m'
 
 Right, Wrong, Total = 0, 0, 0
 
 while True:
+   
     """
     print(f'Right: {green}{Right}{white} | ', end = '')
     print(f'Wrong: {cyan}{Wrong}{white} | ', end = '')
@@ -19,16 +20,19 @@ while True:
         print(f'Ratio: {yell}{round(Right / Total * 100, 2)}{white}% ')
     print()
     """
+
     # time.sleep(1.2)
-    a = random.randint(-1, 12)
-    b = random.randint(-1, 12)
+    
+    a = random.randint(11, 99)
+    b = random.randint(11, 99)
+
+    # a = random.randint(-1, 12)
+    # b = random.randint(-1, 12)
+    
     # s = random.choice(['+', '-', 'x', '÷', '/'])
-<<<<<<< HEAD
-    # s = random.choice(['+', '-'])
+    # s = random.choice(['+', '-', '-', '-'])
     s = random.choice(['x'])
-=======
-    s = random.choice(['+', '-', '-', '-'])
->>>>>>> 4dbd659d9c0800712a439bb7cb7327ff25c0e365
+    
     res = 1e9
     if a == 0 or b == 0:
         continue
@@ -56,13 +60,13 @@ while True:
     elif s == '÷' or s == '/':
         res = a // b
     if res == int(guess):
-        print(f'{green} ➜ Correct! {noc}')
+        print(f'{green} ➜ Correct! {noc} \n')
         Right += 1
     else:
         Wrong += 1
-        print(a, b, a*b, guess, int(guess))
+        # print(a, b, a*b, guess, int(guess))
         print(f'{cyan} ➜ Wrong! {noc}')
-        print(f'{green} ➜ The answer is {res} {noc}')
+        print(f'{green} ➜ The answer is {res} {noc} \n')
     # print()
     Total += 1
 print(white + 'see you next time :)' + noc)
