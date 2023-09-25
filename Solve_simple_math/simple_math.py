@@ -24,10 +24,10 @@ while True:
     # time.sleep(1.2)
     
     a = random.randint(11, 99)
-    b = random.randint(11, 99)
-
     # a = random.randint(-1, 12)
-    # b = random.randint(-1, 12)
+
+    # b = random.randint(11, 99)
+    b = random.randint(-1, 12)
     
     # s = random.choice(['+', '-', 'x', '÷', '/'])
     # s = random.choice(['+', '-', '-', '-'])
