@@ -1,8 +1,8 @@
 Logs
 
 Aug 4 \
-begin working on Computorz
-- [x] understanding the statement
+... computorz begins
+- [x] got the statement
 
 ```b
 $>./computor "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
