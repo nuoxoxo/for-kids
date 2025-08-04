@@ -1,6 +1,6 @@
 Logs
 
-aug 4 \
+Aug 4 \
 begin working on Computorz
 - [x] understanding the statement
 
