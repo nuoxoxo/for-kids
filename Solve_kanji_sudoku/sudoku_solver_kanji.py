@@ -1,171 +1,131 @@
-"""
-     //
-   _00\
-  (__/ \  _  _
-     \  \/ \/ \
-     (         )\
-      \_______/  \
-       [[] [[]
-       [[] [[]
-"""
-
-"""
-[
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-    [0, 0, 0,  0, 0, 0,  0, 0, 0],
-    [0, 0, 0,  0, 0, 0,  0, 0, 0]
-]
-"""
-
-S = '四'
-W = '五'
-L = '六'
-Q = '七'
-J = '九'
-P = '平'
-Y = '月'
-D = '大'
-X = '小'
-
-arr = [S, W, L, Q, J, P, Y, D, X]
-
-#
-# search for 0-marked square
-# return the top-left most one
-#
+arr = ['S', 'W', 'L', 'Q', 'J', 'P', 'Y', 'D', 'X']
+void = '.'
+charset = {}
+charset['S'] = '四'
+charset['W'] = '五'
+charset['L'] = '六'
+charset['Q'] = '七'
+charset['J'] = '九'
+charset['P'] = '平'
+charset['Y'] = '月'
+charset['D'] = '大'
+charset['X'] = '小'
+charset[void] = '｀'#'＿''丶'
 
 def find_next_move(puzzle):
     for r in range(9):
         for c in range(9):
-            if puzzle[r][c] == 0:
+            if puzzle[r][c] == void:
                 return r, c
     return None, None
 
-#
-# brain
-#
-
-def Brain(puzzle, guess, R, C): 
-
-    guessed_row = puzzle[R]
-    if guess in guessed_row: # check dup in current row
+def Brain(puzzle, poss, R, C): 
+    if poss in puzzle[R]:
         return False
-
-    guessed_col = [puzzle[i][C] for i in range(9)]
-    if guess in guessed_col: # check dup in same col
+    if poss in [row[C] for row in puzzle]:
         return False
-
-    r = (R // 3) * 3
-    c = (C // 3) * 3 # check the 3x3 where {R, C} is 
+    r, c = (R // 3) * 3, (C // 3) * 3
     for rr in range(r, r + 3):
         for cc in range(c, c + 3):
-            if guess == puzzle[rr][cc]:
+            if poss == puzzle[rr][cc]:
                 return False
     return True
 
-
-
-def solver(puzzle):
+def solvegame(puzzle):
     r, c = find_next_move(puzzle)
-    if r is None: # solved if board has no 0
+    if r is None:
         return True 
-    for guess in arr:
-        if Brain(puzzle, guess, r, c):
-            puzzle[r][c] = guess # btk guess
-            if solver(puzzle): # btk recurse
+    for poss in arr:
+        if Brain(puzzle, poss, r, c):
+            puzzle[r][c] = poss
+            if solvegame(puzzle):
                 return True
-        # backtrack reset
-        puzzle[r][c] = 0
+            puzzle[r][c] = void#'丶'
     return False
 
+gg, yy, cc, rest, nl = '\033[32m', '\033[33m', '\033[36m', '\033[0m', '\n'
+def yellow(s: str) -> str: return yy + s + rest
+def green(s: str) -> str: return gg + s + rest
+def cyan(s: str) -> str: return cc + s + rest
 
-
-def PrintGrid(Game):
+def printgame(Game,src_grid=None):
     for r in range(9):
         for c in range(9):
-            print(Game[r][c], end=' ')
+            char = Game[r][c]
+            if src_grid and Game[r][c] != src_grid[r][c]:
+                print( green( charset[char] ), end='')
+            else:
+                print( charset[char], end='')
         print()
     print()
 
-# D R I V E
 if __name__ == '__main__':
     
-    Game_0 = [
-        [W, 0, 0,  0, 0, 0,  0, 0, S],
-        [0, Y, 0,  0, P, 0,  W, 0, 0],
-        [P, 0, 0,  0, 0, 0,  0, Y, J],
-
-        [0, L, W,  P, 0, Q,  Y, 0, D],
-        [J, 0, 0,  Y, 0, D,  0, 0, P],
-        [Y, 0, D,  X, 0, L,  S, J, 0],
-
-        [D, Q, 0,  0, 0, 0,  0, 0, Y],
-        [0, 0, J,  0, D, 0,  0, Q, 0],
-        [L, 0, 0,  0, 0, 0,  0, 0, W]
+    stringlist_0 = [
+        'W.......S',
+        '.Y..P.W..',
+        'P......YJ',
+        '.LWP.QY.D',
+        'J..Y.D..P',
+        'Y.DX.LSJ.',
+        'DQ......Y',
+        '..J.D..Q.',
+        'L.......W',
     ]
     
-    Game_1 = [
-        [0, 0, 0,  P, 0, 0,  S, 0, 0],
-        [0, P, X,  Y, S, 0,  0, W, 0],
-        [S, 0, W,  0, 0, Q,  0, 0, 0],
-
-        [P, D, S,  L, 0, X,  0, 0, 0],
-        [0, 0, 0,  0, 0, 0,  0, 0, 0],
-        [0, 0, 0,  Q, 0, W,  L, D, S],
-
-        [0, 0, 0,  W, 0, 0,  Y, 0, D],
-        [0, Y, 0,  0, Q, D,  X, S, 0],
-        [0, 0, L,  0, 0, Y,  0, 0, 0]
+    stringlist_1 = [
+        '...P..S..',
+        '.PXYS..W.',
+        'S.W..Q...',
+        'PDSL.X...',
+        '.........',
+        '...Q.WLDS',
+        '...W..Y.D',
+        '.Y..QDXS.',
+        '..L..Y...',
     ]
 
-    Game_2 = [
-        [0, J, 0,  0, 0, 0,  0, 0, D],
-        [0, P, W,  0, 0, S,  0, Q, 0],
-        [0, Y, 0,  0, D, X,  0, 0, L],
-
-        [0, 0, 0,  0, 0, 0,  D, 0, S],
-        [0, D, 0,  0, J, 0,  0, L, 0],
-        [L, 0, P,  0, 0, 0,  0, 0, 0],
-
-        [S, 0, 0,  Q, W, 0,  0, X, 0],
-        [0, Q, 0,  P, 0, 0,  S, J, 0],
-        [P, 0, 0,  0, 0, 0,  0, D, 0]
+    stringlist_2 = [
+        '.J......D',
+        '.PW..S.Q.',
+        '.Y..DX..L',
+        '......D.S',
+        '.D..J..L.',
+        'L.P......',
+        'S..QW..X.',
+        '.Q.P..SJ.',
+        'P......D.',
     ]
 
-    Game_3 = [
-        [0, X, Q,  S, Y, 0,  0, 0, 0],
-        [0, 0, 0,  0, 0, 0,  0, 0, 0],
-        [L, 0, 0,  0, J, 0,  P, 0, S],
-
-        [0, L, Y,  0, 0, 0,  0, S, 0],
-        [S, 0, 0,  0, D, 0,  0, 0, W],
-        [0, 0, 0,  0, 0, 0,  X, J, 0],
-
-        [W, 0, L,  0, S, 0,  0, 0, D],
-        [0, 0, 0,  0, 0, 0,  0, 0, 0],
-        [0, 0, 0,  0, L, J,  W, X, 0]
+    stringlist_3 = [
+        '.XQSY....',
+        '.........',
+        'L...J.P.S',
+        '.LY....S.',
+        'S...D...W',
+        '......XJ.',
+        'W.L.S...D',
+        '.........',
+        '....LJWX.',
     ]
 
-    def Counting(): # hack c++ static int
-        Counting.i += 1
-    Counting.i = 0
+    def count():
+        count.i += 1
+    count.i = 0
 
-    def SolveGame(Game):
-        Counting()
-        print(f'Game {Counting.i}')
-        PrintGrid(Game)
-        solver(Game)
-        PrintGrid(Game)
+    def solver(stringlist):
+        count()
+        print(f'Game {count.i} {'-'*21}\n')
+        game = [[c for c in line] for line in stringlist]
+        src_grid = [_[:]for _ in game]
+        printgame( game )
+        solvegame( game )
+        printgame( game, src_grid )
 
-    SolveGame(Game_0)
-    SolveGame(Game_1)
-    SolveGame(Game_2)
-    SolveGame(Game_3)
+    for sl in [
+        stringlist_0,
+        stringlist_1,
+        stringlist_2,
+        stringlist_3,
+    ]: solver( sl )
+
