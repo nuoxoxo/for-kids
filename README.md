@@ -15,7 +15,7 @@ Discriminant < 0: 2 complex conjugate solutions (no real roots)
 def parser(line): # line should be an equation like ' *** = *** '
     """
     supposing that our input is correctly-formatted/
-        > every term respect a ∗ X^p
+        > every term respect n ∗ X^p
         > except 0 on the rhs
     """
     assert line.count('=') == 1
