@@ -1,32 +1,17 @@
-import collections, re
+import collections, re, math
 Green,Yello,Mage,Cyan,Rest = ['\033[1;32m','\033[1;33m','\033[31m','\033[36m','\033[0m']
 
 def cutter(line) -> tuple:
     l,r = parser( line )
     for k,v in r.items(): l[k] -= v
-    for k,v in l.items(): l[k] = round(v,7) # to have finite decimal places
-    ### for k,v in l.items():# math.isclose(c, 0, abs_tol=1e-12)
-
-    #for k,v in l.items(): print('flat/',k,v)
-    #print('/flatten\n')
-
+    for k,v in l.items(): l[k] = round(v,7)
     polydegree = sorted(l.keys(), reverse=True)[0]
     assert polydegree > -1
 
     res = []
     for k,v in sorted(l.items()):
-        """
-        if abs(v) > 1e-12: # to have non-0 floats
-            w = int(v) if v == int(v) else v
-            res.append( f'{ "+" if w > 0 else "-" } { abs(w) } * X^{ k }' )
-        """
-        # no need to del 0
         w = int(v) if v == int(v) else v
-        sign = ''
-        if w >= 0:
-            sign = '+'
-        if w < 0:
-            sign = '-'
+        sign = '-' if w < 0 else '+'
         res.append( f'{sign} {abs(w)} * X^{k}' )
     res = ' '.join(res)
     if res.startswith('+ '):
@@ -34,22 +19,40 @@ def cutter(line) -> tuple:
     elif res.startswith('- '):
         res = '-' + res[2:]
 
+    _solutions = [None, None]
     _gt2 = 'The polynomial degree is strictly greater than 2, I can\'t solve.'
     _anyrealnum = 'Any real number is a solution.'
     _nosolution = 'No solution.'
-    _2slns = 'Discriminant is strictly ..., the two solutions are:\n.../1\n.../2'
+    _2slns = 'Discriminant is strictly ..., the two|one solution|s are:\n.../1\n.../2'
+    _solvable = True
 
     res_reduced_form = f'Reduced form: {res} = 0'
     res_polydegree = '' if polydegree == 0 else f'Polynomial degree: {polydegree}\n'
     if polydegree > 2:
         res_polydegree += _gt2
+        _solvable = False
     elif polydegree == 0:
-        if l[0] == 0: res_polydegree += _anyrealnum
-        else: res_polydegree += _nosolution
+        _solvable = False
+        if l[0] == 0:
+            res_polydegree += _anyrealnum
+        else:
+            res_polydegree += _nosolution
+    elif polydegree == 1: # linear
+        print(f'{Yello}L I N E A R{Rest} !!!')
+        _solutions[0] = round(-c / b,7)
     else:
-        res_polydegree += _2slns
+        res_polydegree += _2slns ### TODO : might have only 1 soln
+        a,b,c = l[2],l[1],l[0]
+        D = b*b - 4*a*c
+        if D < 0:
+            print( f'Discriminant is strictly {Yello}negative{Rest}, \
+the {Yello}two{Rest} complex solutions are:' )
+        elif a != 0:
+            DSR = math.sqrt(D)
+            _solutions = [round(-b + _,7) / (2 * a) for _ in [DSR, -DSR]]
+            print(f'a > 0 :: solutions/{Yello}', _solutions, Rest)
 
-    return ( res_reduced_form, res_polydegree, )
+    return ( res_reduced_form, res_polydegree, )#_solutions)
 
 def parser(line) -> tuple:
     assert line.count('=') == 1
@@ -70,6 +73,9 @@ def parser(line) -> tuple:
         RHS[ int(pwr) ] += cof
     return ( LHS, RHS )
 
+
+# driver/test
+
 egs = [
     "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0",
     "5 * X^0 + 4 * X^1 = 4 * X^0",
@@ -87,9 +93,7 @@ for eg in egs:
     l,r = parser( eg )
     #for side in parser(eg):
         #for k,v in side.items():print('side/',k,v)
-
     #print('/parsed\n')
-
     rf_string,pd_string = cutter( eg )
     redform = 'Reduced form: '
     padding =  redform + Yello
