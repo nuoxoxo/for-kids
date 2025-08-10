@@ -7,9 +7,8 @@ def cutter(line) -> tuple:
     for k,v in l.items(): l[k] = round(v,7) # to have finite decimal places
     ### for k,v in l.items():# math.isclose(c, 0, abs_tol=1e-12)
 
-    for k,v in l.items(): print('flat/',k,v)
-
-    print('/flatten\n')
+    #for k,v in l.items(): print('flat/',k,v)
+    #print('/flatten\n')
 
     polydegree = sorted(l.keys(), reverse=True)[0]
     assert polydegree > -1
@@ -35,10 +34,20 @@ def cutter(line) -> tuple:
     elif res.startswith('- '):
         res = '-' + res[2:]
 
-    gt2 = '\nThe polynomial degree is strictly greater than 2, I can\'t solve.'
+    _gt2 = 'The polynomial degree is strictly greater than 2, I can\'t solve.'
+    _anyrealnum = 'Any real number is a solution.'
+    _nosolution = 'No solution.'
+    _2slns = 'Discriminant is strictly ..., the two solutions are:\n.../1\n.../2'
+
     res_reduced_form = f'Reduced form: {res} = 0'
-    res_polydegree = '' if polydegree == 0 else f'Polynomial degree: {polydegree}'
-    if polydegree > 2: res_polydegree += gt2
+    res_polydegree = '' if polydegree == 0 else f'Polynomial degree: {polydegree}\n'
+    if polydegree > 2:
+        res_polydegree += _gt2
+    elif polydegree == 0:
+        if l[0] == 0: res_polydegree += _anyrealnum
+        else: res_polydegree += _nosolution
+    else:
+        res_polydegree += _2slns
 
     return ( res_reduced_form, res_polydegree, )
 
@@ -76,10 +85,10 @@ egs = [
 for eg in egs:
     print(eg)
     l,r = parser( eg )
-    for side in parser(eg):
-        for k,v in side.items():print('side/',k,v)
+    #for side in parser(eg):
+        #for k,v in side.items():print('side/',k,v)
 
-    print('/parsed\n')
+    #print('/parsed\n')
 
     rf_string,pd_string = cutter( eg )
     redform = 'Reduced form: '
