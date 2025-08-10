@@ -1,6 +1,23 @@
-import collections, re, math
-INFS = 1e-12
-Green,Yello,Mage,Cyan,Rest = ['\033[1;32m','\033[1;33m','\033[31m','\033[1;36m','\033[0m']
+import collections, re, math, sys
+TEST,INFS = True, 1e-12
+if not TEST:
+    Green,Yello,Mage,Cyan,Rest = '\033[1;32m','\033[1;33m','\033[31m','\033[1;36m','\033[0m'
+else:
+    Green,Yello,Mage,Cyan,Rest = '','','','',''
+
+def printer(line):
+    rf_string, pd_string, res = cutter( line )
+    print(f'{Green}{rf_string}{Rest}')
+    print(f'{Yello}{pd_string}{Rest}')
+    if all(res):
+        if isinstance(res[0],complex):
+            for _ in res:
+                print(f'{Cyan}{str(_).replace("(","").replace(")","").replace("j","i")}{Rest}')
+        else:
+            for _ in [round(_,7) for _ in res]: print(f'{Cyan}{_}{Rest}')
+    elif res[0] != None:
+        print(f'{Cyan}{res[0]}{Rest}')
+    print()
 
 def cutter(line) -> tuple:
     l,r = parser( line )
@@ -25,20 +42,13 @@ def cutter(line) -> tuple:
     _anyrealnum = 'Any real number is a solution.'
     _nosolution = 'No solution.'
     _solutionis = 'The solution is:'
-    #_2slns = 'Discriminant is strictly ..., the two|one solution|s are:\n.../1\n.../2'
-    _negcomplex = 'Discriminant is strictly negative, the two complex solutions are:'
-    _posreal = 'Discriminant is strictly positive, the two solutions are:'
+    _complex = 'Discriminant is strictly negative, the two complex solutions are:'
+    _realsln = 'Discriminant is strictly positive, the two solutions are:'
 
     res_reduced_form = f'Reduced form: {res} = 0'
     res_polydegree = '' if polydegree == 0 else f'Polynomial degree: {polydegree}\n'
-    a,b,c = l[2],l[1],l[0]
 
-    """
-    print('polydegree/',polydegree)
-    print('a/',a)
-    print('b/',b)
-    print('c/',c)
-    """
+    a,b,c = l[2],l[1],l[0]
 
     if polydegree > 2:
         res_polydegree += _gt2
@@ -48,15 +58,13 @@ def cutter(line) -> tuple:
         else:
             res_polydegree += _nosolution
     elif polydegree == 1: # LINEAR . FIXME
-        #a,b,c = l[2],l[1],l[0]
-        print(f'\t{Yello}L I N E A R{Rest} !!!')
         if abs(b) < INFS:
             if abs(c) < INFS:
                 res_polydegree += _anyrealnum
             else:
                 res_polydegree += _nosolution
         else:
-            res_polydegree += _solutionis#'The solution is:'
+            res_polydegree += _solutionis
             _solutions[0] = round(-c / b,7)
     else: # QUADRATIC . FIXME
         if abs(a) < INFS:
@@ -66,30 +74,30 @@ def cutter(line) -> tuple:
                 else:
                     res_polydegree += _nosolution
             else: # QUADRATIC ---> case/ Linear
-                res_polydegree += _solutionis#'The solution is:'
+                res_polydegree += _solutionis
                 _solutions[0] = round(-c/b,7)
         else: # QUADRATIC ---> case/ complex solutions
             D = b*b - 4*a*c
             if D < 0:
-                res_polydegree += _negcomplex
+                res_polydegree += _complex
                 REAL = -b / (2 * a)
                 IMG = math.sqrt(-D) / (2 * a)
                 _solutions = [complex(REAL, IMG), complex(REAL, - IMG)]
             elif abs(D) < INFS: # QUADRATIC ---> case/ one real root . FIXME
                 _solutions[0] = round(-c / b,7)
-                res_polydegree += _solutionis#'The solution is:'
+                res_polydegree += _solutionis
             else: # QUADRATIC ---> case/ 2 real roots
                 DSR = math.sqrt(D)
+                res_polydegree += _realsln
                 _solutions = [round(-b + _,7) / (2 * a) for _ in [DSR, -DSR]]
     return ( res_reduced_form, res_polydegree, _solutions)
 
 def parser(line) -> tuple:
-    #print('inside/parser')
     assert line.count('=') == 1
     regex = r'([+-])(\d+(?:\.\d+)?)[*]X\^(\d+)'
     sub = re.sub(regex, '', line.strip())
     mid = sub.replace(' ','')
-    LR = ['+' + _ if _[0] not in '+-' else _ for _ in mid.split('=')]# if _[0] not in '+-' else _ ]
+    LR = ['+' + _ if _[0] not in '+-' else _ for _ in mid.split('=')]
     lhs, rhs = [re.compile(regex).findall( _ ) for _ in LR]
     LHS = collections.defaultdict(float)
     RHS = collections.defaultdict(float)
@@ -119,16 +127,16 @@ egs = [
     "42 * X^0 + 21 + 2 * X^1 + 3 * X^2 + 0", # testing wrong input
 ]
 
-for i,eg in enumerate(egs):
-    rf_string, pd_string, res = cutter( eg )
-    print(f'{Green}{rf_string}{Rest}')
-    print(f'{Yello}{pd_string}{Rest}')
-    if all(res):
-        if isinstance(res[0],complex):
-            for _ in res: print(f'{Cyan}{_}{Rest}')
-        else:
-            for _ in [round(_,7) for _ in res]: print(f'{Cyan}{_}{Rest}')
-    elif res[0] != None:
-        print(f'{Cyan}{res[0]}{Rest}')
-    print(f'{Cyan}\n{i}/ends\n{Rest}')
-
+if not TEST:
+    if len(sys.argv) != 2:
+        print('args/err');sys.exit(1)
+    inp = sys.argv[1]
+    checkchars = r'[*=+\-X0-9 ]+'
+    if not re.fullmatch( checkchars, inp):
+        print('inp/illegal chars');sys.exit(1)
+    printer( inp )
+    #print('test/not\n')
+else:
+    for i,eg in enumerate(egs):
+        printer( eg )
+        #print('test/yes')
