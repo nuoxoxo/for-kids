@@ -1,6 +1,6 @@
 # Aug 10 
 - [x] can begin solving eq. now
-- [x] quote: 'Exponents are organized and present.'
+- [x] quote: _Exponents are organized and present._
 
 # Aug 8
 ```b
