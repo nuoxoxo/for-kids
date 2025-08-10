@@ -24,15 +24,15 @@ def cutter(line) -> tuple:
     _anyrealnum = 'Any real number is a solution.'
     _nosolution = 'No solution.'
     _2slns = 'Discriminant is strictly ..., the two|one solution|s are:\n.../1\n.../2'
-    _solvable = True
+    #_solvable = True ### XXX
 
     res_reduced_form = f'Reduced form: {res} = 0'
     res_polydegree = '' if polydegree == 0 else f'Polynomial degree: {polydegree}\n'
     if polydegree > 2:
         res_polydegree += _gt2
-        _solvable = False
+        #_solvable = False ### XXX
     elif polydegree == 0:
-        _solvable = False
+        #_solvable = False ### XXX
         if l[0] == 0:
             res_polydegree += _anyrealnum
         else:
