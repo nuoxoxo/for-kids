@@ -64,6 +64,7 @@ for eg in egs: parser( eg )
 ```py
 egs = [
     "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0",
+    # Reduced form: 4 * X^0 + 4 * X^1 - 9.3 * X^2 = 0
     # Polynomial degree: 2
     # Discriminant is strictly positive, the two solutions are:
     # 0.905239
