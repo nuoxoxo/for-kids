@@ -1,29 +1,46 @@
 import collections, re
 Green,Yello,Mage,Cyan,Rest = ['\033[1;32m','\033[1;33m','\033[31m','\033[36m','\033[0m']
 
-def cutter(line):
+def cutter(line) -> tuple:
     l,r = parser( line )
     for k,v in r.items(): l[k] -= v
     for k,v in l.items(): l[k] = round(v,7) # to have finite decimal places
-    ### for k,v in l.items():# math.isclose(c, 0, abs_tol=1e-12) # removed zeroes?? ### TODO
+    ### for k,v in l.items():# math.isclose(c, 0, abs_tol=1e-12)
+
     for k,v in l.items(): print('flat/',k,v)
 
     print('/flatten\n')
 
-    # TODO 2 /
-
-    ### 6 * X^0 = 6 * X^0 should be
-    ### 0 * X^0 = 0
+    polydegree = sorted(l.keys(), reverse=True)[0]
+    assert polydegree > -1
 
     res = []
     for k,v in sorted(l.items()):
+        """
         if abs(v) > 1e-12: # to have non-0 floats
             w = int(v) if v == int(v) else v
             res.append( f'{ "+" if w > 0 else "-" } { abs(w) } * X^{ k }' )
+        """
+        # no need to del 0
+        w = int(v) if v == int(v) else v
+        sign = ''
+        if w >= 0:
+            sign = '+'
+        if w < 0:
+            sign = '-'
+        res.append( f'{sign} {abs(w)} * X^{k}' )
     res = ' '.join(res)
     if res.startswith('+ '):
-        return f'{res[2:]} = 0'
-    return f'{res} = 0'
+        res = res[2:]
+    elif res.startswith('- '):
+        res = '-' + res[2:]
+
+    gt2 = '\nThe polynomial degree is strictly greater than 2, I can\'t solve.'
+    res_reduced_form = f'Reduced form: {res} = 0'
+    res_polydegree = '' if polydegree == 0 else f'Polynomial degree: {polydegree}'
+    if polydegree > 2: res_polydegree += gt2
+
+    return ( res_reduced_form, res_polydegree, )
 
 def parser(line) -> tuple:
     assert line.count('=') == 1
@@ -64,5 +81,33 @@ for eg in egs:
 
     print('/parsed\n')
 
-    res = cutter( eg )
-    print(f'Reduced form: {Green}{res}{Rest}\n')
+    rf_string,pd_string = cutter( eg )
+    redform = 'Reduced form: '
+    padding =  redform + Yello
+    print(f'{Green}{rf_string}{Rest}')
+
+    DBG = rf_string[14:]
+    def printpadding(s):print(f'{padding}{s}{Rest}')
+    match eg:
+        case "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0":
+            printpadding('4 * X^0 + 4 * X^1 - 9.3 * X^2 = 0')#+Rest)
+            assert DBG == '4 * X^0 + 4 * X^1 - 9.3 * X^2 = 0'
+        case "5 * X^0 + 4 * X^1 = 4 * X^0":
+            printpadding('1 * X^0 + 4 * X^1 = 0')#+Rest)
+            assert DBG == '1 * X^0 + 4 * X^1 = 0'
+        case "8 * X^0 - 6 * X^1 + 0 * X^2 - 5.6 * X^3 = 3 * X^0":
+            printpadding('5 * X^0 - 6 * X^1 + 0 * X^2 - 5.6 * X^3 = 0')#+Rest)
+            assert DBG == '5 * X^0 - 6 * X^1 + 0 * X^2 - 5.6 * X^3 = 0'
+        case "6 * X^0 = 6 * X^0":
+            printpadding('0 * X^0 = 0')#+Rest)
+            assert DBG == '0 * X^0 = 0'
+        case "10 * X^0 = 15 * X^0":
+            printpadding('-5 * X^0 = 0')#+Rest)
+            assert DBG == '-5 * X^0 = 0'
+        case "1 * X^0 + 2 * X^1 + 5 * X^2 = 0":
+            printpadding('1 * X^0 + 2 * X^1 + 5 * X^2 = 0')#)+Rest)
+            assert DBG == '1 * X^0 + 2 * X^1 + 5 * X^2 = 0'
+
+    if pd_string:
+        print(pd_string)
+    print()
