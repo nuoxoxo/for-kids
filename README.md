@@ -1,5 +1,5 @@
 # Aug 10 
-- [x] can begin solving eq. now
+- [x] prog.: now solves quadratic and linear
 - [x] quote: _Exponents are organized and present._
 
 # Aug 8
