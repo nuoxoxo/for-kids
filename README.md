@@ -1,5 +1,42 @@
 Logs
 
+Aug 10 
+- samples for parser
+```py
+egs = [
+    "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0",
+    # Polynomial degree: 2
+    # Discriminant is strictly positive, the two solutions are:
+    # 0.905239
+    # -0.475131
+
+    "5 * X^0 + 4 * X^1 = 4 * X^0",
+    # Reduced form: 1 * X^0 + 4 * X^1 = 0
+    # The solution is:
+    # -0.25
+
+    "8 * X^0 - 6 * X^1 + 0 * X^2 - 5.6 * X^3 = 3 * X^0",
+    # Reduced form: 5 * X^0 - 6 * X^1 + 0 * X^2 - 5.6 * X^3 = 0
+    # Polynomial degree: 3
+    # The polynomial degree is strictly greater than 2, I can't solve.
+
+    "6 * X^0 = 6 * X^0",
+    # Reduced form: 0 * X^0 = 0
+    # Any real number is a solution.
+
+    "10 * X^0 = 15 * X^0",
+    # Reduced form: -5 * X^0 = 0
+    # No solution.
+
+    "1 * X^0 + 2 * X^1 + 5 * X^2 = 0",
+    # Reduced form: 1 * X^0 + 2 * X^1 + 5 * X^2 = 0
+    # Polynomial degree: 2
+    # Discriminant is strictly negative, the two complex solutions are:
+    # -1/5 + 2i/5
+    # -1/5 - 2i/5
+]
+```
+
 Aug 4 \
 ... computorz begins
 - [x] got the statement
