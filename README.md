@@ -1,3 +1,10 @@
+# Aug 8
+```b
+Discriminant > 0: 2 distinct real solutions
+Discriminant = 0: 1 real solution (a repeated root)
+Discriminant < 0: 2 complex conjugate solutions (no real roots)
+```
+
 # Aug 6 
 - [x] 初代 parser
 ```sh
