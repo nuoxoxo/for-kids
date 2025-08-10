@@ -1,4 +1,4 @@
-# Aug 10 
+# Aug 6 
 - [x] 初代 parser
 ```sh
 def parser(line): # line should be an equation like ' *** = *** '
@@ -14,8 +14,10 @@ def parser(line): # line should be an equation like ' *** = *** '
     # testing
     sub = re.sub(regex, '', line.strip())
     mid = sub.replace(' ','')
+    print(mid.split('='))
 
-    LR = ['+' + _ for _ in mid.split('=') if _[0] != '-' ]
+    LR = ['+' + _ if _[0] not in '+-' else _ for _ in mid.split('=')]# if _[0] not in '+-' else _ ]
+    for lr in LR:print('lr/',lr)
     print('org/', line)
     print('sub/', sub)
     print('mid/', mid)
@@ -51,7 +53,8 @@ egs = [
     "8 * X^0 - 6 * X^1 + 0 * X^2 - 5.6 * X^3 = 3 * X^0",
     "1 * X^0 + 2 * X^1 + 5 * X^2 = 0",
     "42 * X^0 + 21 + 2 * X^1 + 3 * X^2 = 0",
-    "42 * X^0 + 21 + 2 * X^1 + 3 * X^2 = 0",
+    '136.2 * X^0 - 64.5 * X^1 + 52.9 * X^2 + 5.6 * X^3 = -42.1 * X^0 - 21.4 * X^1 - 77 * X^2 + 1024 * X^3 - 33 * X^0',
+    "42 * X^0 + 21 + 2 * X^1 + 3 * X^2 + 0",
 ]
 for eg in egs: parser( eg )
 ```
