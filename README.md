@@ -1,3 +1,6 @@
+# Aug 10 
+- [x] can begin solving eq. now
+
 # Aug 8
 ```b
 Discriminant > 0: 2 distinct real solutions
