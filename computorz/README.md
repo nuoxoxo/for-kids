@@ -39,8 +39,8 @@ constant  | 0  | 0  | 0  |   |Any real number is a solution.
     - D = `b ** 2 - 4 * a * c`
 ```b
 D > 0: 2 distinct real solutions
-D = 0: 1 real solution (a repeated root)
-D < 0: 2 complex conjugate solutions (no real roots)
+D = 0: 1 real repeated root (intersecting X-axis once) 
+D < 0: 2 complex conjugate root, no real roots
 ```
 
 # 6 
