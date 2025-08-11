@@ -1,5 +1,5 @@
 # 11
--  [x] needs a better/correct case-logic 
+-  [x] prog. needs a better/correct case-logic 
   - `if !a && !b && !c` - coefficients are zeros/ Any real number is a solution.
   - `if !a && !b && c` - nonzero constant/ No solution.
   - `if !a && b` - linear/ `bx + x = 0`
