@@ -4,7 +4,7 @@
   - `if !a && !b && c` - nonzero constant/ No solution.
   - `if !a && b` - linear/ `bx + x = 0`
   - `if a` - quadratic
-  - to re-check | _TODO_
+  - [ ]  to re-check | _TODO_
 
 &nbsp;|A|B|C|D||
 -|-|-|-|-|-
