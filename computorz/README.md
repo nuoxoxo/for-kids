@@ -26,10 +26,13 @@ todo
 
 # 10 
 prog
-- [x]  初代 solver :: now solves quadratic and linear  
-  - coefficients a, b, c
-    - a,b,c are the only things that determine 1) the nature of the equation 2) the solution(s)
-    -  `a,b,c ∈ REAL` needless to say
+- [x]  初代 solver
+  - now solves quadratic and linear  
+
+notes
+- coefficients a, b, c
+  - a,b,c are the only things that determine 1) the nature of the equation 2) the solution(s)
+  -  `a,b,c ∈ REAL` needless to say
 - [x] quote: _Exponents are organized and present._
 
 todo
