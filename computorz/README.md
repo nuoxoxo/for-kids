@@ -1,5 +1,6 @@
 # 11
--  [x] prog. needs a better/correct case-logic 
+prog
+-  [x] a better/correct case-logic 
   - `if !a && !b && !c` - coefficients are zeros/ Any real number is a solution.
   - `if !a && !b && c` - nonzero constant/ No solution.
   - `if !a && b` - linear/ `bx + x = 0`
@@ -18,22 +19,26 @@ linear    | 0  | !0 |    |   | 1 real root
 constant  | 0  | 0  | !0 |   | No solution.
 constant  | 0  | 0  | 0  |   |Any real number is a solution.
 
+todo
 -  [ ] `math.sqrt` should be `something ** .5`
 -  [ ] we don't need regex checkers
 -  [ ] look for testcases
 
 # 10 
-- [x] prog.: now solves quadratic and linear
+prog
+- [x] now solves quadratic and linear
   - coefficients a, b, c
     - a,b,c are the only things that determine 1) the nature of the equation 2) the solution(s)
     -  `a,b,c ∈ REAL` needless to say
-  -  moved _TODO_:
-    -  ~~needs a better/correct case-logic~~
-    -  ~~minor | `math.sqrt` is actually `something ** .5`~~
 - [x] quote: _Exponents are organized and present._
 
+todo
+-  moved _TODO_:
+  -  ~~needs a better/correct case-logic~~
+  -  ~~minor | `math.sqrt` is actually `something ** .5`~~
+
 # 8
-- [x] prog.: back to basics
+- [x] back to basics
   - [x] case/ linear, nonzero constant (no solution), a=b=c=0 (any real number is a solution) | ~~_TODO_~~
   - case/ quadratic, the nature of roots depends on the Discriminant D
     - D = `b ** 2 - 4 * a * c`
@@ -105,7 +110,7 @@ for eg in egs: parser( eg )
 ```
 
 # Aug 4 
-- [x] samples for parser - For Copy n Paste
+- [x] samples for parser - for copy n paste
 ```py
 egs = [
     "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0",
