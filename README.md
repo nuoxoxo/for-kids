@@ -6,13 +6,15 @@
   - `if a` - quadratic
   - to re-check | _TODO_
 
-nature|a|b|c|D|root
+&nbsp;|A|B|C|D||
 -|-|-|-|-|-
 ||
 quadratic | != 0 |      |      | > 0  | 2 real roots
 quadratic | != 0 |      |      | 0    | (touches X-axis once) 1 real repeated root 
 quadratic | != 0 |      |      | < 0  | _2 complex roots_
+||
 linear    | 0    | != 0 |      |      | 1 real root 
+||
 constant  | 0    | 0    | != 0 |      | No solution.
 constant  | 0    | 0    | 0    |      |Any real number is a solution.
 
