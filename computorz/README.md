@@ -18,7 +18,8 @@ linear    | 0  | !0 |    |   | 1 real root
 constant  | 0  | 0  | !0 |   | No solution.
 constant  | 0  | 0  | 0  |   |Any real number is a solution.
 
--  [ ] `math.sqrt` should be `something ** .5` 
+-  [ ] `math.sqrt` should be `something ** .5`
+-  [ ] we don't need regex checkers 
 
 # 10 
 - [x] prog.: now solves quadratic and linear
