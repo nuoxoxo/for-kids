@@ -27,9 +27,9 @@ constant  | 0  | 0  | 0  |   |Any real number is a solution.
   - coefficients a, b, c
     - a,b,c are the only things that determine 1) the nature of the equation 2) the solution(s)
     -  `a,b,c ∈ REAL` needless to say
-  -  moved:
-    -  ~~needs a better/correct case-logic | _TODO_~~
-    -  ~~minor | `math.sqrt` is actually `something ** .5` | _TODO_~~
+  -  moved _TODO_:
+    -  ~~needs a better/correct case-logic~~
+    -  ~~minor | `math.sqrt` is actually `something ** .5`~~
 - [x] quote: _Exponents are organized and present._
 
 # 8
