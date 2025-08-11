@@ -1,12 +1,24 @@
 # Aug 10 
 - [x] prog.: now solves quadratic and linear
+  - coefficients a, b, c
+    - a,b,c are the only things that determine 1) the nature of the equation 2) the solution(s)
+    -  `a,b,c ∈ REAL` needless to say
+  -  needs a better/correct case-logic - _TODO_
+  -  minor | `math.sqrt` is actually `something ** .5` - _TODO_
 - [x] quote: _Exponents are organized and present._
 
 # Aug 8
+- [x] prog.: back to basics
+  - case/ linear, nonzero constant (no solution), a=b=c=0 (any real number is a solution) - _TODO_
+  - case/ quadratic, the nature of roots depends on the Discriminant D
+    - D = `b ** 2 - 4 * a * c`
 ```b
-Discriminant > 0: 2 distinct real solutions
-Discriminant = 0: 1 real solution (a repeated root)
-Discriminant < 0: 2 complex conjugate solutions (no real roots)
+D > 0:
+    2 distinct real solutions
+D = 0:
+    1 real solution (a repeated root)
+D < 0:
+    2 complex conjugate solutions (no real roots)
 ```
 
 # Aug 6 
