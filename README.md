@@ -1,8 +1,24 @@
-# AUG 11
--  [ ] needs a better/correct case-logic 
+# 11
+-  [x] needs a better/correct case-logic 
+  - `if !a && !b && !c` - coefficients are zeros/ Any real number is a solution.
+  - `if !a && !b && c` - nonzero constant/ No solution.
+  - `if !a && b` - linear/ `bx + x = 0`
+  - `if a` - quadratic
+  - to re-check | _TODO_
+
+nature|a|b|c|D|root
+-|-|-|-|-|-
+||
+quadratic | != 0 |      |      | > 0  | 2 real roots
+quadratic | != 0 |      |      | 0    | (touches X-axis once) 1 real repeated root 
+quadratic | != 0 |      |      | < 0  | _2 complex roots_
+linear    | 0    | != 0 |      |      | 1 real root 
+constant  | 0    | 0    | != 0 |      | No solution.
+constant  | 0    | 0    | 0    |      |Any real number is a solution.
+
 -  [ ] `math.sqrt` should be `something ** .5` 
 
-# Aug 10 
+# 10 
 - [x] prog.: now solves quadratic and linear
   - coefficients a, b, c
     - a,b,c are the only things that determine 1) the nature of the equation 2) the solution(s)
@@ -12,7 +28,7 @@
     -  ~~minor | `math.sqrt` is actually `something ** .5` | _TODO_~~
 - [x] quote: _Exponents are organized and present._
 
-# Aug 8
+# 8
 - [x] prog.: back to basics
   - [x] case/ linear, nonzero constant (no solution), a=b=c=0 (any real number is a solution) | ~~_TODO_~~
   - case/ quadratic, the nature of roots depends on the Discriminant D
@@ -23,7 +39,7 @@ D = 0: 1 real solution (a repeated root)
 D < 0: 2 complex conjugate solutions (no real roots)
 ```
 
-# Aug 6 
+# 6 
 - [x] 初代 parser
 ```sh
 def parser(line): # line should be an equation like ' *** = *** '
