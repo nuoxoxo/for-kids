@@ -1,6 +1,6 @@
 import collections, re, math, sys
-TEST,INFS = True, 1e-12
-if not TEST:
+TEST,INFS = not True, 1e-12
+if TEST:
     Green,Yello,Mage,Cyan,Rest = '\033[1;32m','\033[1;33m','\033[31m','\033[1;36m','\033[0m'
 else:
     Green,Yello,Mage,Cyan,Rest = '','','','',''
@@ -129,10 +129,12 @@ egs = [
 
 if not TEST:
     if len(sys.argv) != 2:
+        print(sys.argv)
         print('args/err');sys.exit(1)
     inp = sys.argv[1]
-    checkchars = r'[*=+\-X0-9 ]+'
+    checkchars = r'[*=+\-\.X0-9 ^]+'
     if not re.fullmatch( checkchars, inp):
+        print('err/',inp)
         print('inp/illegal chars');sys.exit(1)
     printer( inp )
     #print('test/not\n')
